@@ -16,6 +16,6 @@ export default function Home(){
  </section>
  <div className="stats"><section className="glass stat"><span className="kicker">SEÇÕES TOTALIZADAS</span><div className="statValue">{progress===null?'—':progress+'%'}</div><div className="micro">Progresso informado pelo TSE</div></section><section className="glass stat"><span className="kicker">ÚLTIMA CONSULTA</span><div className="statValue">{checked||'—'}</div><div className="micro">Nova consulta a cada 5 segundos</div></section></div>
  <section className="glass info"><div className="infoIcon">↗</div><div><h3>Transparência em tempo real</h3><p>{result?.error||'Este painel apresenta dados recebidos do TSE. Não calcula projeções de vitória.'}</p></div></section>
- <footer><span>BRASIL ELEIÇÕES <b>·</b> 2026</span><span>PROJETO INDEPENDENTE · FONTE: TSE</span></footer>
+ <footer><span>BRASIL ELEIÇÕES <b>·</b> 2026</span><span>DESENVOLVIDO POR REINALDO TOSCANO · FONTE: TSE</span></footer>
  </div></main>
 }
