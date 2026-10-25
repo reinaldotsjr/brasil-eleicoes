@@ -1,0 +1,4 @@
+import {NextResponse} from 'next/server';
+export const dynamic='force-dynamic';
+const SOURCE=process.env.TSE_JSON_URL;
+export async function GET(){if(!SOURCE)return NextResponse.json({ok:false,error:'Configure TSE_JSON_URL com endpoint oficial validado.'},{status:503});try{const u=new URL(SOURCE);if(u.protocol!=='https:'||u.hostname!=='resultados.tse.jus.br')throw Error('Fonte não autorizada');const r=await fetch(u.toString(),{cache:'no-store',signal:AbortSignal.timeout(8000)});if(!r.ok)throw Error('TSE HTTP '+r.status);const data=await r.json();return NextResponse.json({ok:true,data,updatedAt:new Date().toISOString()},{headers:{'Cache-Control':'no-store'}})}catch(e){return NextResponse.json({ok:false,error:e instanceof Error?e.message:'Falha de consulta'},{status:502})}}
